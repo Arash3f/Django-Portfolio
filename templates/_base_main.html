@@ -1,0 +1,175 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'main1/img/favicon.png' %}" type="image/png">
+        <title>Portfolio</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'main1/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/popup/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/flaticon/flaticon.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'main1/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/css/responsive.css' %}">
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container box_1620">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <a class="navbar-brand logo_h" href="index.html"><img src="{% static 'main1/img/logo.png' %}" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav menu_nav ml-auto">
+                                <li class="nav-item active"><a class="nav-link" href="/main/">Home</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li> 
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="nav-item submenu dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            </ul>
+                        </div> 
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+                <div class="container box_1620">
+                    <div class="banner_inner d-flex align-items-center">
+                    <div class="banner_content">
+                        <div class="media">
+                            {% block Banner %}{% endblock  %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Welcome Area =================-->
+        <section class="welcome_area p_120">
+            <div class="container">
+                <div class="row welcome_inner">
+                    <div class="col-lg-6">
+                        {% block Welcome1 %}{% endblock  %}
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="tools_expert">
+                            {% block Welcome2 %}{% endblock  %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Welcome Area =================-->
+        
+        <!--================My Tabs Area =================-->
+        <section class="mytabs_area p_120">
+            <div class="container">
+                <div class="tabs_inner">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Experiences</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            {% block Tabs %}{% endblock  %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End My Tabs Area =================--> 
+
+        <!--================Feature Area =================-->
+        <section class="feature_area p_120">
+            <div class="container">
+                {% block Feature %}
+                {% endblock  %}
+            </div>
+        </section>
+        <!--================End Feature Area =================-->
+
+        <!--================Home Gallery Area =================-->
+        <section class="home_gallery_area p_120">
+            {% block Gallery %}
+            {% endblock  %}
+        </section>
+        <!--================End Home Gallery Area =================-->
+        
+        <!--================Footer Area =================-->
+        <footer class="footer_area p_120">
+            <div class="container">
+                <div class="row footer_inner">
+                    <div class="col-lg-5 col-sm-6">
+                        {% block aboutme %}{% endblock  %}
+                    </div>
+                    <div class="col-lg-5 col-sm-6">
+                        
+                    </div>
+                    <div class="col-lg-2">
+                        <aside class="f_widget social_widget">
+                            <div class="f_title">
+                                <h3>Follow Me</h3>
+                            </div>
+                            <p>Let us be social</p>
+                            {% block follow %}{% endblock follow %}
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--================End Footer Area =================-->
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'main1/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'main1/js/popper.js' %}"></script>
+        <script src="{% static 'main1/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'main1/js/stellar.js' %}"></script>
+        <script src="{% static 'main1/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'main1/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/counter-up/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'main1/js/mail-script.js' %}"></script>
+        <script src="{% static 'main1/js/theme.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+{% extends "_base_main.html" %}
+{% load static %}
+
+{% block Banner %}
+    <div class="d-flex">
+        <img src="{% static user.picture %}" alt="">
+    </div>
+    <div class="media-body">
+        <div class="personal_text">
+            <h6>Hello Everybody, i am</h6>
+            <h3>{{user.get_full_name}}</h3>
+            <h4>{{user.job}}</h4>
+            <p>{{user.summery}}</p>
+            <ul class="list basic_info">
+                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.Date}}</a></li>
+                <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
+                <li><a href="#"><i class="lnr lnr-envelope"></i> {{user.email}}</a></li>
+                <li><a href="#"><i class="lnr lnr-home"></i> {{user.Location}}</a></li>
+            </ul>
+            <ul class="list personal_social">
+                <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+                <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+                <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock Banner %}
+
+{% block Welcome1 %}
+    <div class="welcome_text">
+        <h4>About Myself</h4>
+        <p>{{user.about}}</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="wel_item">
+                    <i class="lnr lnr-database"></i>
+                    <h4>${{user.total_donation}}</h4>
+                    <p>Total Donation</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="wel_item">
+                    <i class="lnr lnr-book"></i>
+                    <h4>{{user.total_donation}}</h4>
+                    <p>Total Projects</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="wel_item">
+                    <i class="lnr lnr-users"></i>
+                    <h4>{{user.total_volunteers}}</h4>
+                    <p>Total Volunteers1</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock Welcome1 %}
+
+{% block Welcome2 %}
+    <div class="skill_main">
+        {% for skill in skills %}
+        <div class="skill_item">
+                <h4>{{skill.title}} <span class="counter">&nbsp {{skill.amount}}</span>%</h4>
+                <div class="progress_br">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow={{skill.amount}} aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock  %}
+
+{% block Tabs %}
+    <ul class="list">
+        {% for exp in exps %}
+        <li>
+            <span></span>
+            <div class="media">
+                <div class="d-flex">
+                    <p>{{exp.Date }}</p>
+                </div>
+                <div class="d-flex"> </div>
+                <div class="media-body">
+                    <h4>{{exp.title}}</h4>
+                    <p>{{exp.about}}</p>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock  %}
+
+{% block Feature %}
+    <div class="main_title">
+        <h2>offerings to my clients</h2>
+        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</p>
+    </div>
+    <div class="feature_inner row">
+        {% for srv in services %}
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                    <i class="flaticon-city"></i>
+                    <h4>{{srv.title}}</h4>
+                    <p>{{srv.about}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock  %}
+
+{% block Gallery %}
+    <div class="container">
+        <div class="main_title">
+            <h2>Our Latest Featured Projects</h2>
+            <p>Who are in extremely love with eco friendly system.</p>
+        </div>
+        <div class="isotope_fillter">
+            <ul class="gallery_filter list">
+                <li class="active" data-filter="*"><a href="#">All</a></li>
+                {% for tag in tags %}
+                    <li data-filter=".{{tag.name}}"><a href="#">{{tag.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="gallery_f_inner row imageGallery1">
+            {% for proj in projs %}
+                <div class="col-lg-4 col-md-4 col-sm-6 {{proj.tags_name}} creative">
+                    <div class="h_gallery_item">
+                        <div class="g_img_item">
+                            <img class="img-fluid" src="{% static proj.picture %}" alt="">
+                            <a class="light" href="img/gallery/project-6.jpg"><img src="{% static 'main1/img/gallery/icon.png' %}" alt=""></a>
+                        </div>
+                        <div class="g_item_text">
+                            <h4>{{proj.title}}</h4>
+                            <p>{{proj.title_2}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="more_btn">
+            <a class="main_btn" href="#">Load More Items</a>
+        </div>
+    </div>
+{% endblock  %}
+
+{% block follow %}
+    <ul class="list">
+        <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+{% endblock  %}
+
+{% block aboutme %}
+    <aside class="f_widget ab_widget">
+        <div class="f_title">
+            <h3>About Me</h3>
+        </div>
+        <p>{{user.about}}</p>
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </aside>
+{% endblock  %}
