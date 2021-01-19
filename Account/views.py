@@ -8,7 +8,7 @@ from taggit.models import Tag
 def site_page(request):
     html = 'main.html'
     
-    user        = models.User.objects.get(id=1)
+    user        = models.User.objects.all()[0]
     skill       = models.skill.objects.all()
     experiences = models.experiences.objects.all()
     tags        = Tag.objects.all()

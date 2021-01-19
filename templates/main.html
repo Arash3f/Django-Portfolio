@@ -3,7 +3,11 @@
 
 {% block Banner %}
     <div class="d-flex">
-        <img src="{% static user.picture %}" alt="">
+        {% if user.picture %}
+            <img src="{% static user.picture %}" alt="">
+        {% else %}
+            <img src="{% static 'main1/img/personal.jpg' %}" alt="">
+        {% endif %}
     </div>
     <div class="media-body">
         <div class="personal_text">
