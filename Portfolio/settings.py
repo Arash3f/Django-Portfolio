@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
-import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# ------pythonanywhere-------
+# ALLOWED_HOSTS = ['(account name).pythonanywhere.com']
+# ------pythonanywhere-------
 
 # Application definition
 
@@ -136,7 +138,13 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
 
+# ------pythonanywhere-------
+# MEDIA_URL = '/media/'
 
-# heroku :
-
-django_heroku.settings(locals())
+# STATICFILES_DIRS = [
+#     '/home/Arash3f/Portfolio/static',
+#     '/home/Arash3f/Portfolio/media'
+# ]
+# STATIC_ROOT = '/home/Arash3f/Portfolio/staticfiles'
+# MEDIA_ROOT = '/home/Arash3f/Portfolio/media'
+# ------pythonanywhere-------

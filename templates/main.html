@@ -4,7 +4,7 @@
 {% block Banner %}
     <div class="d-flex">
         {% if user.picture %}
-            <img src="{% static user.picture %}" alt="">
+            <img src="{{ user.picture.url }}" alt="">
         {% else %}
             <img src="{% static 'main1/img/personal.jpg' %}" alt="">
         {% endif %}
@@ -99,13 +99,13 @@
 {% block Feature %}
     <div class="main_title">
         <h2>offerings to my clients</h2>
-        <p>If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You may see some for as low as $.17 each.</p>
+        <p>offerings</p>
     </div>
     <div class="feature_inner row">
         {% for srv in services %}
             <div class="col-lg-4 col-md-6">
                 <div class="feature_item">
-                    <i class="flaticon-city"></i>
+                    <i class="flaticon-sketch"></i>
                     <h4>{{srv.title}}</h4>
                     <p>{{srv.about}}</p>
                 </div>
@@ -118,7 +118,7 @@
     <div class="container">
         <div class="main_title">
             <h2>Our Latest Featured Projects</h2>
-            <p>Who are in extremely love with eco friendly system.</p>
+            <p>OUR PROJECTS</p>
         </div>
         <div class="isotope_fillter">
             <ul class="gallery_filter list">
@@ -135,7 +135,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 {{proj.tags_name}} creative">
                     <div class="h_gallery_item">
                         <div class="g_img_item">
-                            <img class="img-fluid" src="{% static proj.picture %}" alt="">
+                            <img class="img-fluid" src="{{ proj.picture.url }}" alt="">
                             <a class="light" href="img/gallery/project-6.jpg"><img src="{% static 'main1/img/gallery/icon.png' %}" alt=""></a>
                         </div>
                         <div class="g_item_text">
