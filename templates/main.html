@@ -14,7 +14,7 @@
             <h6>Hello Everybody, i am</h6>
             <h3>{{user.get_full_name}}</h3>
             <h4>{{user.job}}</h4>
-            <p>{{user.summery}}</p>
+            <p>{{user.summery | safe}}</p>
             <ul class="list basic_info">
                 <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.Date}}</a></li>
                 <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
@@ -23,7 +23,7 @@
             </ul>
             <ul class="list personal_social">
                 <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
-                <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+                <li><a href="{{user.telegram}}"><i class="fa fa-telegram"></i></a></li>
                 <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
             </ul>
@@ -34,7 +34,7 @@
 {% block Welcome1 %}
     <div class="welcome_text">
         <h4>About Myself</h4>
-        <p>{{user.about}}</p>
+        <p>{{user.about | safe}}</p>
         <div class="row">
             <div class="col-md-4">
                 <div class="wel_item">
@@ -46,7 +46,7 @@
             <div class="col-md-4">
                 <div class="wel_item">
                     <i class="lnr lnr-book"></i>
-                    <h4>{{user.total_donation}}</h4>
+                    <h4>{{user.total_project}}</h4>
                     <p>Total Projects</p>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 <div class="wel_item">
                     <i class="lnr lnr-users"></i>
                     <h4>{{user.total_volunteers}}</h4>
-                    <p>Total Volunteers1</p>
+                    <p>Total Volunteers</p>
                 </div>
             </div>
         </div>
@@ -98,8 +98,8 @@
 
 {% block Feature %}
     <div class="main_title">
-        <h2>offerings to my clients</h2>
-        <p>offerings</p>
+        <h2>My Services</h2>
+        <p>What Can I do ???</p>
     </div>
     <div class="feature_inner row">
         {% for srv in services %}
@@ -107,7 +107,7 @@
                 <div class="feature_item">
                     <i class="flaticon-sketch"></i>
                     <h4>{{srv.title}}</h4>
-                    <p>{{srv.about}}</p>
+                    <p>{{srv.about | safe}}</p>
                 </div>
             </div>
         {% endfor %}
@@ -117,8 +117,8 @@
 {% block Gallery %}
     <div class="container">
         <div class="main_title">
-            <h2>Our Latest Featured Projects</h2>
-            <p>OUR PROJECTS</p>
+            <h2>My Projects and Paoers</h2>
+            <p>All tags </p>
         </div>
         <div class="isotope_fillter">
             <ul class="gallery_filter list">
@@ -140,7 +140,7 @@
                         </div>
                         <div class="g_item_text">
                             <h4>{{proj.title}}</h4>
-                            <p>{{proj.title_2}}</p>
+                            <p>{{proj.title_2 | safe}}</p>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
         <div class="f_title">
             <h3>About Me</h3>
         </div>
-        <p>{{user.about}}</p>
+        <p>{{user.end_about_me | safe}}</p>
         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
