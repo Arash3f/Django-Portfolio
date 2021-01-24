@@ -23,3 +23,38 @@ def site_page(request):
             }
     
     return render(request,html,data)
+
+def about_page(request):
+    html = 'about.html'
+    
+    user        = models.User.objects.all()[0]
+    skill       = models.skill.objects.all().order_by('-amount')
+    
+    data = {    'user'  :user ,
+                'skills' :skill 
+            }
+    
+    return render(request,html,data)
+
+
+def services_page(request):
+    html = 'services.html'
+    
+    user        = models.User.objects.all()[0]
+    services    = models.services.objects.all()
+    
+    data = {    'user'  :user ,
+                'services' : services
+            }
+    
+    return render(request,html,data)
+
+def contact_page(request):
+    html = 'contact.html'
+    
+    user        = models.User.objects.all()[0]
+    
+    data = {    'user'  :user 
+            }
+    
+    return render(request,html,data)

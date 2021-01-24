@@ -1,0 +1,101 @@
+{% extends "_base_about.html" %}
+{% load static %}
+
+{% block Banner %}
+    <div class="col-lg-5">
+        {% if user.picture %}
+            <img class="img-fluid" src="{{ user.picture.url }}" alt="">
+        {% else %}
+            <img class="img-fluid" src="{% static 'main1/img/personal.jpg' %}" alt="">
+        {% endif %}
+    </div>
+    <div class="col-lg-7">
+        <div class="personal_text">
+            <h6>Hello Everybody, i am</h6>
+            <h3>{{user.get_full_name}}</h3>
+            <h4>{{user.job}}</h4>
+            <p>{{user.summery | safe}}</p>
+            <ul class="list basic_info">
+                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.Date}}</a></li>
+                <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
+                <li><a href="#"><i class="lnr lnr-envelope"></i> {{user.email}}</a></li>
+                <li><a href="#"><i class="lnr lnr-home"></i> {{user.Location}}</a></li>
+            </ul>
+            <ul class="list personal_social">
+                <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+                <li><a href="{{user.telegram}}"><i class="fa fa-telegram"></i></a></li>
+                <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock Banner %}
+{% block Welcome3 %}
+        <h1 class="text-heading title_color">About Myself</h1>
+        <p class="sample-text">
+            {{user.about | safe}}
+        </p>
+{% endblock Welcome3 %}
+{% block Welcome1 %}
+    <div class="welcome_text">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="wel_item">
+                    <i class="lnr lnr-database"></i>
+                    <h4>${{user.total_donation}}</h4>
+                    <p>Total Donation</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="wel_item">
+                    <i class="lnr lnr-book"></i>
+                    <h4>{{user.total_project}}</h4>
+                    <p>Total Projects</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="wel_item">
+                    <i class="lnr lnr-users"></i>
+                    <h4>{{user.total_volunteers}}</h4>
+                    <p>Total Volunteers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock Welcome1 %}
+
+{% block Welcome2 %}
+    <div class="skill_main">
+        {% for skill in skills %}
+        <div class="skill_item">
+                <h4>{{skill.title}} <span class="counter">&nbsp {{skill.amount}}</span>%</h4>
+                <div class="progress_br">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow={{skill.amount}} aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock  %}
+
+{% block follow %}
+    <ul class="list">
+        <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+{% endblock  %}
+
+{% block aboutme %}
+    <aside class="f_widget ab_widget">
+        <div class="f_title">
+            <h3>About Me</h3>
+        </div>
+        <p>{{user.end_about_me | safe}}</p>
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </aside>
+{% endblock  %}

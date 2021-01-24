@@ -1,0 +1,43 @@
+{% extends "_base_contact.html" %}
+{% load static %}
+
+{% block follow %}
+    <ul class="list">
+        <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+{% endblock  %}
+
+{% block aboutme %}
+    <aside class="f_widget ab_widget">
+        <div class="f_title">
+            <h3>About Me</h3>
+        </div>
+        <p>{{user.end_about_me | safe}}</p>
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </aside>
+{% endblock  %}
+
+{% block contact_area%}
+    <div class="contact_info">
+        <div class="info_item">
+            <i class="lnr lnr-home"></i>
+            <h6>{{user.Location}}</h6>
+            <p>{{user.address}}</p>
+        </div>
+        <div class="info_item">
+            <i class="lnr lnr-phone-handset"></i>
+            <h6><a href="#">{{user.phone}}</a></h6>
+            <p>{{user.call_phone}}</p>
+        </div>
+        <div class="info_item">
+            <i class="lnr lnr-envelope"></i>
+            <h6><a href="#">{{user.email}}</a></h6>
+            <p>{{user.send_email}}</p>
+        </div>
+    </div>
+{% endblock %}

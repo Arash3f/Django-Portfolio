@@ -1,0 +1,41 @@
+{% extends "_base_services.html" %}
+{% load static %}
+
+{% block Feature %}
+    <div class="main_title">
+        <h2>My Services</h2>
+        <p>What Can I do ???</p>
+    </div>
+    <div class="feature_inner row">
+        {% for srv in services %}
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                    <i class="flaticon-sketch"></i>
+                    <h4>{{srv.title}}</h4>
+                    <p>{{srv.about | safe}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock  %}
+
+{% block follow %}
+    <ul class="list">
+        <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+{% endblock  %}
+
+{% block aboutme %}
+    <aside class="f_widget ab_widget">
+        <div class="f_title">
+            <h3>About Me</h3>
+        </div>
+        <p>{{user.end_about_me | safe}}</p>
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </aside>
+{% endblock  %}

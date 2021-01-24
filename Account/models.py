@@ -20,6 +20,9 @@ class User(AbstractUser):
     total_donation  = models.IntegerField('total donation' , default=0 , blank=True , null=True)
     end_about_me    = RichTextField()
     
+    address = models.CharField   ( 'address' , max_length=100 , blank=True , null=True)
+    call_phone = models.CharField   ( 'call phone' , max_length=100 , blank=True , null=True)
+    send_email = models.CharField   ( 'send email' , max_length=100 , blank=True , null=True)
     
 class skill(models.Model):
     title  = models.CharField   ( 'name' , max_length=30 , blank=True , null=True)
