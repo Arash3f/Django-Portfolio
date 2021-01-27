@@ -1,6 +1,8 @@
 from Account import models
 from django.shortcuts import render
 from taggit.models import Tag
+from . import forms
+from django.views import View
 
 
 
@@ -11,8 +13,8 @@ def site_page(request):
     skill       = models.skill.objects.all().order_by('-amount')
     experiences = models.experiences.objects.all().order_by('Date')
     tags        = Tag.objects.all()
-    projects    = models.project.objects.all()
-    services    = models.services.objects.all()
+    projects    = models.project.objects.all()[:6]
+    services    = models.services.objects.all()[:6]
     
     data = {    'user'  :user ,
                 'skills' :skill , 
@@ -49,12 +51,22 @@ def services_page(request):
     
     return render(request,html,data)
 
-def contact_page(request):
+class contact(View):
     html = 'contact.html'
-    
+    form = forms.messageform()
     user        = models.User.objects.all()[0]
-    
-    data = {    'user'  :user 
-            }
-    
-    return render(request,html,data)
+    def get(self, request):
+        data = {    'user'  :self.user ,
+                    'form'  :self.form
+                }
+        return render(request,self.html,data)
+    def post(self, request):
+        form = forms.messageform(request.POST)
+        if form.is_valid():
+            print(form.is_valid())
+            form.save()
+            form =forms.messageform()
+        data = {    'user'  :self.user ,
+                    'form'  :form
+                }
+        return render(request,self.html,data)

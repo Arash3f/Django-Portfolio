@@ -20,10 +20,6 @@ class User(AbstractUser):
     total_donation  = models.IntegerField('total donation' , default=0 , blank=True , null=True)
     end_about_me    = RichTextField()
     
-    address = models.CharField   ( 'address' , max_length=100 , blank=True , null=True)
-    call_phone = models.CharField   ( 'call phone' , max_length=100 , blank=True , null=True)
-    send_email = models.CharField   ( 'send email' , max_length=100 , blank=True , null=True)
-    
 class skill(models.Model):
     title  = models.CharField   ( 'name' , max_length=30 , blank=True , null=True)
     amount = models.IntegerField('amount' , default=0 , blank=True , null=True)
@@ -64,5 +60,14 @@ class services(models.Model):
     def __str__(self):
         return f"{self.title}"
     
+    
+class messages(models.Model):
+    name        = models.CharField( 'name' , max_length=30 , blank=True , null=True)
+    email       = models.EmailField('email' , blank=True , null=True )
+    subject     = models.CharField( 'subject' , max_length=30 , blank=True , null=True)
+    mes         = models.TextField( 'mesmessage' , max_length=300 , blank=True , null=True)
+    
+    def __str__(self):
+        return f"{self.name}"
     
     

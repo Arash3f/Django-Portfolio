@@ -99,7 +99,7 @@
 {% block Feature %}
     <div class="main_title">
         <h2>My Services</h2>
-        <p>What Can I do ???</p>
+        <p>see my all services here</p>
     </div>
     <div class="feature_inner row">
         {% for srv in services %}
@@ -111,14 +111,18 @@
                 </div>
             </div>
         {% endfor %}
+       
     </div>
+     <div class="more_btn" >
+            <a class="main_btn" href="services">Load More Items</a>
+        </div>
 {% endblock  %}
 
 {% block Gallery %}
     <div class="container">
         <div class="main_title">
-            <h2>My Projects and Papers</h2>
-            <p>All tags </p>
+            <h2>My last Projects and Papers</h2>
+            <p>see my last 6 Projects here</p>
         </div>
         <div class="isotope_fillter">
             <ul class="gallery_filter list">
@@ -151,7 +155,7 @@
             {% endfor %}
         </div>
         <div class="more_btn">
-            <a class="main_btn" href="#">Load More Items</a>
+            <a class="main_btn" href="/">Load More Items</a>
         </div>
     </div>
 {% endblock  %}
@@ -169,8 +173,9 @@
     <aside class="f_widget ab_widget">
         <div class="f_title">
             <h3>About Me</h3>
+            <p>{{user.end_about_me | safe}}</p>
         </div>
-        <p>{{user.end_about_me | safe}}</p>
+        
         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>

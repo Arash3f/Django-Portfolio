@@ -40,3 +40,7 @@ class experiencesAdmin(admin.ModelAdmin):
 @admin.register(models.services)
 class servicesAdmin(admin.ModelAdmin):
     list_display  = ['__str__' ]
+    
+@admin.register(models.messages)
+class messagesAdmin(admin.ModelAdmin):
+    list_display  = ['__str__' ]
