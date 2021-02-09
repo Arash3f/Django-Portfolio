@@ -1,7 +1,7 @@
 {% extends "_base_about.html" %}
 {% load static %}
 
-{% block Banner %}
+{% block part1 %}
     <div class="col-lg-5">
         {% if user.picture %}
             <img class="img-fluid" src="{{ user.picture.url }}" alt="">
@@ -16,26 +16,21 @@
             <h4>{{user.job}}</h4>
             <p>{{user.summery | safe}}</p>
             <ul class="list basic_info">
-                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.Date}}</a></li>
+                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.date_of_birth}}</a></li>
                 <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
                 <li><a href="#"><i class="lnr lnr-envelope"></i> {{user.email}}</a></li>
                 <li><a href="#"><i class="lnr lnr-home"></i> {{user.Location}}</a></li>
             </ul>
             <ul class="list personal_social">
                 <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
-                <li><a href="{{user.telegram}}"><i class="fa fa-telegram"></i></a></li>
+                <li><a href="{{user.skype}}"><i class="fa fa-skype"></i></a></li>
                 <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
             </ul>
         </div>
     </div>
-{% endblock Banner %}
-{% block Welcome3 %}
-        <h1 class="text-heading title_color">About Myself</h1>
-        <p class="sample-text">
-            {{user.about | safe}}
-        </p>
-{% endblock Welcome3 %}
+{% endblock part1 %}
+
 {% block Welcome1 %}
     <div class="welcome_text">
         <div class="row">
@@ -79,10 +74,21 @@
     </div>
 {% endblock  %}
 
+{% block Welcome3 %}
+    <h3 class="mb-30 title_color">About Myself</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <blockquote class="generic-blockquote">
+{{user.about | safe}}            
+            </blockquote>
+        </div>
+    </div>
+{% endblock Welcome3 %}
+
 {% block follow %}
     <ul class="list">
         <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
-        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.skype}}"><i class="fa fa-skype"></i></a></li>
         <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
         <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
     </ul>

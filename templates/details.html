@@ -1,0 +1,166 @@
+
+{% extends "_base_detail.html" %}
+
+{% load static %}
+
+
+{% block Comments %}
+<h4>{{pro.comment1}} Comments</h4>
+        {%for comment in comments%}
+<div class="comment-list">
+    <div class="single-comment justify-content-between d-flex">
+        <div class="user justify-content-between d-flex">
+        <div class="thumb">
+            <img src="{% static 'main1/img/blog/c5.jpg' %}" alt="">
+        </div>
+        <div class="desc">
+            <h5><a href="#">{{comment.user.get_full_name}}</a></h5>
+            <p class="date">December 4, 2017 at 3:12 pm </p>
+            <p class="comment">
+                {{comment.body}}
+            </p>
+        </div>
+            
+        </div>
+    </div>
+</div> 
+        {%endfor %}
+{% include "pagination.html" with page=comments%}
+{% endblock %}
+
+
+
+
+
+
+{% block Post %}
+
+<div class="col-lg-12">
+    <div class="feature-img">
+        {% if pro.picture_blog %}
+            <img src="{{ pro.picture_blog.url }}" alt="">
+        {% else %}
+            <img src="{% static 'main1/img/blog/main-blog/m-blog-1.jpg' %}" alt="">
+        {% endif %}
+    </div>									
+</div>
+<div class="col-lg-3  col-md-3">
+    <div class="blog_info text-right">
+        <ul class="blog_meta list">
+            <li><a>{{pro.author}}<i class="lnr lnr-user"></i></li>
+            <li><a>{{pro.format_date}}<i class="lnr lnr-calendar-full"></i></a></li>
+            <li><a>{{pro.view}} Views<i class="lnr lnr-eye"></i></a></li>
+            <li><a>{{pro.comment1}} Comments<i class="lnr lnr-bubble"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-9 col-md-9 blog_details">
+    <a href="{{pro.get_absolute_url}}"><h2>{{pro.title}}</h2></a>
+    <p>{{pro.summery|safe}}</p>
+</div>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-6">
+            <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+        </div>
+        <div class="col-6">
+            <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
+        </div>	
+        <div class="col-lg-12 mt-25">
+            <p>{{pro.body|safe}}</p>											
+        </div>									
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-6">
+            <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+        </div>
+        <div class="col-6">
+            <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
+        </div>									
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block author_widget %}
+<aside class="single_sidebar_widget author_widget">
+    {% if user.picture_blog %}
+        <img class="author_img rounded-circle" src="{{ user.picture_blog.url }}" alt="">
+    {% else %}
+        <img class="author_img rounded-circle" src="{% static 'main1/img/blog/author.png' %}" alt="">
+    {% endif %}
+    <h4>{{user.get_full_name}}</h4>
+    <p>{{user.job}}</p>
+    <div class="social_icon">
+        <a href="{{user.github}}"><i class="fa fa-github"></i></a>
+        <a href="{{user.skype}}"><i class="fa fa-skype"></i></a>
+        <a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a>
+        <a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a>
+    </div>
+    <p>{{user.summery | safe}}</p>
+    <div class="br"></div>
+</aside>
+{% endblock %}
+
+{% block popular_post %}
+<aside class="single_sidebar_widget popular_post_widget">
+    <h3 class="widget_title">Last Posts</h3>
+    {% for pro in last_pro %}
+    <div class="media post_item">
+        <div class="media-body">
+            <a href="{{pro.get_absolute_url}}"><h3>{{pro.title}}</h3></a>
+            <p>{{pro.format_date}}</p>
+        </div>
+    </div>
+    {%endfor%}
+    <div class="br"></div>
+</aside>
+{% endblock %}
+
+{% block tags %}
+<aside class="single_sidebar_widget post_category_widget">
+    <h4 class="widget_title">tags</h4>
+    <ul class="list cat-list">
+        {% for tag in tags %}
+        <li>
+            <a href="/blog/{{tag}}" class="d-flex justify-content-between">
+                <p>{{tag}}</p>
+            </a>
+        </li
+        {%endfor %}															
+    </ul>
+    <div class="br"></div>
+</aside>
+{% endblock %}
+
+
+
+{% block follow %}
+    <ul class="list">
+        <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
+        <li><a href="{{user.skype}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
+    </ul>
+{% endblock  %}
+
+{% block aboutme %}
+    <aside class="f_widget ab_widget">
+        <div class="f_title">
+            <h3>About Me</h3>
+            <p>{{user.end_about_me | safe}}</p>
+        </div>
+        
+        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+    </aside>
+{% endblock  %}

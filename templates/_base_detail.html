@@ -6,7 +6,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="{% static 'main1/img/favicon.png' %}" type="image/png">
+        <link rel="icon" href="{% static 'main1/img/favicon.png" type="image/png' %}">
         <title>Portfolio</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static 'main1/css/bootstrap.css' %}">
@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="{% static 'main1/vendors/nice-select/css/nice-select.css' %}">
         <link rel="stylesheet" href="{% static 'main1/vendors/animate-css/animate.css' %}">
         <link rel="stylesheet" href="{% static 'main1/vendors/popup/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'main1/vendors/flaticon/flaticon.css' %}">
         <!-- main css -->
         <link rel="stylesheet" href="{% static 'main1/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'main1/css/responsive.css' %}">
@@ -55,28 +54,68 @@
         <!--================Home Banner Area =================-->
         <section class="banner_area">
             <div class="box_1620">
-                <div class="banner_inner d-flex align-items-center">
-                    <div class="container">
-                        <div class="banner_content text-center">
-                            <h2>Services</h2>
-                            <div class="page_link">
-                                <a href="/">Home</a>
-                                <a href="/services">Services</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<div class="banner_inner d-flex align-items-center">
+					<div class="container">
+						<div class="banner_content text-center">
+							<h2>Post Details</h2>
+						</div>
+					</div>
+				</div>
             </div>
         </section>
         <!--================End Home Banner Area =================-->
         
-        <!--================Feature Area =================-->
-        <section class="feature_area white_feature p_120">
+        <!--================Blog Area =================-->
+        <section class="blog_area single-post-area p_120">
             <div class="container">
-                {% block Feature %}{% endblock  %}
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post row">
+                            
+                            {% block Post %}
+							{% endblock %}
+                            
+                        </div>
+                        <div class="comments-area">
+                        {% block Comments %}
+						{% endblock %}
+                        </div>
+                        <div class="comment-form">
+                            <h4>Add new comment</h4>
+                            <form method="post" >
+                                {{comment_form.as_p}}
+                                {% csrf_token %}
+                                <p><input type="submit" class="white_bg_btn" value="Add comment"></p>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-4">
+						<div class="blog_right_sidebar">
+							<aside class="single_sidebar_widget search_widget">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="Search Posts">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+									</span>
+								</div><!-- /input-group -->
+								<div class="br"></div>
+							</aside>
+							{% block author_widget %}
+							{% endblock %}
+							
+							{% block popular_post %}
+							{% endblock %}
+							
+							{% block tags %}
+							{% endblock %}
+							
+						</div>
+					</div>
+                </div>
             </div>
         </section>
-        <!--================End Feature Area =================-->
+        <!--================Blog Area =================-->
         
         <!--================Footer Area =================-->
         <footer class="footer_area p_120">

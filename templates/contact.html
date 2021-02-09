@@ -4,7 +4,7 @@
 {% block follow %}
     <ul class="list">
         <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
-        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.skype}}"><i class="fa fa-skype"></i></a></li>
         <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
         <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
     </ul>
@@ -24,6 +24,7 @@
 {% endblock  %}
 
 {% block contact_area%}
+<div class="col-lg-3">
     <div class="contact_info">
         <div class="info_item">
             <i class="lnr lnr-home"></i>
@@ -41,4 +42,13 @@
             <p></p>
         </div>
     </div>
+</div>
+<div class="col-lg-9">
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            </br>
+            <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
+        </form>
+</div>
 {% endblock %}

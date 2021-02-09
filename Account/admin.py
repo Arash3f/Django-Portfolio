@@ -5,12 +5,12 @@ from django.contrib import admin
 
 fields = list(UserAdmin.fieldsets)
 fields[1] = ('Personal info', {'fields': ('first_name','last_name','email','phone',
-                                            'job','Date','Location','picture','summery',
+                                            'job','date_of_birth','Location','picture_main','picture_blog','summery',
                                             'about','end_about_me','total_project','total_volunteers','total_donation',
-                                            'instagram','github','telegram','twitter')})
+                                            'instagram','github','skype','twitter')})
 UserAdmin.fieldsets = tuple(fields)
 # UserAdmin.fieldsets += ('New fields set', {'fields': ('first_name','last_name','email','picture', 'summery','job','Date', 'phone',
-                                            # 'Location','github','telegram','twitter','instagram',
+                                            # 'Location','github','skype','twitter','instagram',
                                             # 'about','total_project','total_volunteers','total_donation',
                                             # 'end_about_me')}),
                                             
@@ -23,6 +23,8 @@ admin.site.register(models.User, UserAdmin)
 class projectAdmin(admin.ModelAdmin):
     list_display  = ['__str__','tags_name_admin']
     list_filter = ['tag']
+    fields = ['title','slug','summery','body','picture_main','picture_blog','tag','author']
+    prepopulated_fields = {"slug": ("title",)}
     
     
 @admin.register(models.skill)
@@ -44,3 +46,12 @@ class servicesAdmin(admin.ModelAdmin):
 @admin.register(models.messages)
 class messagesAdmin(admin.ModelAdmin):
     list_display  = ['__str__' ]
+    
+@admin.register(models.comments)
+class commentsAdmin(admin.ModelAdmin):
+    list_display  = ['user' , 'post' ]
+    
+@admin.register(models.views)
+class viewsAdmin(admin.ModelAdmin):
+    list_display  = ['post' , 'ip']
+    list_filter = ['post']

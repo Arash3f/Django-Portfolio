@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{% static 'main1/img/favicon.png' %}" type="image/png">
-        <title>MeetMe Personal</title>
+        <title>Portfolio</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{% static 'main1/css/bootstrap.css' %}">
         <link rel="stylesheet" href="{% static 'main1/vendors/linericon/style.css' %}">
@@ -41,14 +41,8 @@
                                 <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="/services">Services</a></li> 
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                                    </ul>
-                                </li> 
-                                <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                             </ul>
                         </div> 
                     </div>
@@ -79,17 +73,7 @@
         <section class="contact_area p_120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3">
                     {% block contact_area%}{% endblock %}
-                    </div>
-                    <div class="col-lg-9">
-                            <form method="post">
-                                {% csrf_token %}
-                                {{form.as_table}}
-                                <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
-                            </form>
-                        
-                    </div>
                 </div>
             </div>
         </section>

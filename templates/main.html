@@ -1,10 +1,10 @@
 {% extends "_base_main.html" %}
 {% load static %}
 
-{% block Banner %}
+{% block part1 %}
     <div class="d-flex">
-        {% if user.picture %}
-            <img src="{{ user.picture.url }}" alt="">
+        {% if user.picture_main %}
+            <img src="{{ user.picture_main.url }}" alt="">
         {% else %}
             <img src="{% static 'main1/img/personal.jpg' %}" alt="">
         {% endif %}
@@ -16,20 +16,20 @@
             <h4>{{user.job}}</h4>
             <p>{{user.summery | safe}}</p>
             <ul class="list basic_info">
-                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.Date}}</a></li>
+                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.date_of_birth}}</a></li>
                 <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
                 <li><a href="#"><i class="lnr lnr-envelope"></i> {{user.email}}</a></li>
                 <li><a href="#"><i class="lnr lnr-home"></i> {{user.Location}}</a></li>
             </ul>
             <ul class="list personal_social">
                 <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
-                <li><a href="{{user.telegram}}"><i class="fa fa-telegram"></i></a></li>
+                <li><a href="{{user.skype}}"><i class="fa fa-skype"></i></a></li>
                 <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
                 <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
             </ul>
         </div>
     </div>
-{% endblock Banner %}
+{% endblock part1 %}
 
 {% block Welcome1 %}
     <div class="welcome_text">
@@ -76,14 +76,14 @@
     </div>
 {% endblock  %}
 
-{% block Tabs %}
+{% block exps %}
     <ul class="list">
         {% for exp in exps %}
         <li>
             <span></span>
             <div class="media">
                 <div class="d-flex">
-                    <p>{{exp.Date }}</p>
+                    <p>{{exp.format_date }}</p>
                 </div>
                 <div class="d-flex"> </div>
                 <div class="media-body">
@@ -96,10 +96,10 @@
     </ul>
 {% endblock  %}
 
-{% block Feature %}
+{% block services %}
     <div class="main_title">
         <h2>My Services</h2>
-        <p>see my all services here</p>
+        <p>see my 3 services here</p>
     </div>
     <div class="feature_inner row">
         {% for srv in services %}
@@ -118,7 +118,7 @@
         </div>
 {% endblock  %}
 
-{% block Gallery %}
+{% block projects %}
     <div class="container">
         <div class="main_title">
             <h2>My last Projects and Papers</h2>
@@ -127,9 +127,6 @@
         <div class="isotope_fillter">
             <ul class="gallery_filter list">
                 <li class="active" data-filter="*"><a href="#">All</a></li>
-                {% for tag in tags %}
-                    <li data-filter=".{{tag.name}}"><a href="#">{{tag.name}}</a></li>
-                {% endfor %}
             </ul>
         </div>
     </div>
@@ -139,23 +136,22 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 {{proj.tags_name}} creative">
                     <div class="h_gallery_item">
                         <div class="g_img_item">
-                            {% if proj.picture %}
-                                <img class="img-fluid" src="{{ proj.picture.url }}" alt="">
+                            {% if proj.picture_main %}
+                                <img class="img-fluid" src="{{ proj.picture_main.url }}" alt="">
                             {% else %}
-                                <img class="img-fluid" src="{% static 'main1/img/project.png' %}" alt="">
+                                <img class="img-fluid" src="{% static 'main1/img/gallery/project-1.jpg' %}" alt="">
                             {% endif %}
-                            <a class="light" href="img/gallery/project-6.jpg"><img src="{% static 'main1/img/gallery/icon.png' %}" alt=""></a>
+                            <a class="light" href="{{proj.get_absolute_url}}"><img src="{% static 'main1/img/gallery/icon.png' %}" alt=""></a>
                         </div>
                         <div class="g_item_text">
-                            <h4>{{proj.title}}</h4>
-                            <p>{{proj.title_2 | safe}}</p>
+                            <a href="{{proj.get_absolute_url}}"><h4>{{proj.title}}</h4>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
         <div class="more_btn">
-            <a class="main_btn" href="/">Load More Items</a>
+            <a class="main_btn" href="/blog">Load More Items</a>
         </div>
     </div>
 {% endblock  %}
@@ -163,7 +159,7 @@
 {% block follow %}
     <ul class="list">
         <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
-        <li><a href="{{user.telegram}}"><i class="fa fa-skype"></i></a></li>
+        <li><a href="{{user.skype}}"><i class="fa fa-skype"></i></a></li>
         <li><a href="{{user.twitter}}"><i class="fa fa-twitter"></i></a></li>
         <li><a href="{{user.instagram}}"><i class="fa fa-instagram"></i></a></li>
     </ul>

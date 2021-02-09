@@ -26,3 +26,11 @@ class messageform(forms.ModelForm):
         elif subject==None:
             raise ValidationError("enter subject plese")
         return cd
+    
+class CommentFrom(forms.ModelForm):
+    class Meta:
+        model = models.comments
+        fields =('body',)
+        widgets = {
+            'body'   : forms.Textarea(attrs={'class':"form-control" , "type":"text" , "id":"name" , "name":"message" , "placeholder":"Messege"}),
+        }
