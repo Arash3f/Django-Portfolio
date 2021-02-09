@@ -39,11 +39,21 @@ Django is a high-level Python Web framework that encourages rapid development an
     (Active venv) `cmd : source venv/bin/activate`
     
     (Install) `cmd : pip install -r requirements.txt`
- 5. Migrate : `cmd : python manage.py migrate`
- 6. Create user : `cmd : python manage.py createsuperuser`
- 7. run server : `cmd : python manage.py runserver`
+ 5. Makemigrations : `cmd : python manage.py makemigrations`
+ 6. Migrate : `cmd : python manage.py migrate`
+ 7. Create user : `cmd : python manage.py createsuperuser`
+ 8. Un Comment  everything in `Account/views.py` and `Account/urls.py`
+ 9. run server : `cmd : python manage.py runserver`
  
  ## Pages
  
- 1. main page : `http://127.0.0.1:8000/`
- 2. admin page : `http://127.0.0.1:8000/admin`
+ 1. main page :       `http://127.0.0.1:8000/`
+ 2. admin page :    `http://127.0.0.1:8000/admin`
+ 3. blog page :       `http://127.0.0.1:8000/blog `
+ 4. about page :     `http://127.0.0.1:8000/about`
+ 5. services page : `http://127.0.0.1:8000/services`
+ 6. contact page :  `http://127.0.0.1:8000/contact`
+
+
+
+
