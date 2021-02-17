@@ -11,6 +11,12 @@ class messageform(forms.ModelForm):
             'subject': forms.TextInput(attrs={'class':"form-control" , "type":"text" , "id":"subject" , "name":"subject" , "placeholder":"Enter subject"}),
             'mes'    : forms.Textarea(attrs={'class': "form-control" , "id":"message" , "name":"message" , "placeholder":"Enter message"}),
         }
+        labels = {
+           'name'    :'' ,
+            'email'  : '',
+            'subject': '',
+            'mes'    :  ''       }
+
     def clean(self):
         cd = self.cleaned_data
         email = cd.get('email')
@@ -32,5 +38,12 @@ class CommentFrom(forms.ModelForm):
         model = models.comments
         fields =('body',)
         widgets = {
-            'body'   : forms.Textarea(attrs={'class':"form-control" , "type":"text" , "id":"name" , "name":"message" , "placeholder":"Messege"}),
+            'body'   : forms.Textarea(attrs={'class':"form-control mb-10" , "type":"text" , "name":"message" , "placeholder":"Comment"}),
         }
+        labels = {
+           'body'    :''}
+
+
+class SearchFrom(forms.Form):
+    query = forms.CharField(label=False)
+    query.widget.attrs.update({"type":"text" ,"class":"form-control" ,"placeholder":"Search Posts"})

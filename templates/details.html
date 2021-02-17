@@ -7,25 +7,25 @@
 {% block Comments %}
 <h4>{{pro.comment1}} Comments</h4>
         {%for comment in comments%}
-<div class="comment-list">
-    <div class="single-comment justify-content-between d-flex">
-        <div class="user justify-content-between d-flex">
-        <div class="thumb">
-            <img src="{% static 'main1/img/blog/c5.jpg' %}" alt="">
-        </div>
-        <div class="desc">
-            <h5><a href="#">{{comment.user.get_full_name}}</a></h5>
-            <p class="date">December 4, 2017 at 3:12 pm </p>
-            <p class="comment">
-                {{comment.body}}
-            </p>
-        </div>
-            
-        </div>
-    </div>
-</div> 
+            <div class="comment-list">
+                <div class="single-comment justify-content-between d-flex">
+                    <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                        <img src="{% static 'main1/img/blog/c5.jpg' %}" alt="">
+                    </div>
+                    <div class="desc">
+                        <h5><a href="#">{{comment.user.get_full_name}}</a></h5>
+                        <p class="date">{{comment.Date}}</p>
+                        <p class="comment">
+                            {{comment.body}}
+                        </p>
+                    </div>
+                        
+                    </div>
+                </div>
+            </div> 
         {%endfor %}
-{% include "pagination.html" with page=comments%}
+{% include "__pagination.html" with page=comments%}
 {% endblock %}
 
 

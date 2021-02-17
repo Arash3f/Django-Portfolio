@@ -18,9 +18,15 @@ from django.urls import path
 from django.urls.conf import include
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("Account.urls")),
+    path('register/', views.register.as_view() , name='register'),
+    path('account/', include("django.contrib.auth.urls")),
+    path('account/dashboard/', views.dashboard.as_view() , name='dashboard'),
+    path('account/comments/', views.comments , name='comments'),
 ]
+handler = 'Portfolio.views.handler404'
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

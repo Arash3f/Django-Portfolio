@@ -1,0 +1,24 @@
+<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+    <ul class="nav navbar-nav menu_nav ml-auto">
+        <li class="nav-item submenu dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+            <ul class="dropdown-menu">
+                {% if request.user.username%}
+                    <li class="nav-item"><a class="nav-link" >Hi {{request.user.username}}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/account/dashboard">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/account/logout">Lpg out</a></li>
+                {%else%}
+                    <li class="nav-item"><a class="nav-link" href="/account/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                {%endif%}
+            </ul>
+        </li> 
+        <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li> 
+        <li class="nav-item"><a class="nav-link" href="/services">Services</a></li> 
+        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        
+    </ul>
+</div> 

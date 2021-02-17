@@ -1,0 +1,117 @@
+<!doctype html>
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'main1/img/favicon.png' %}" type="image/png">
+        <title>Portfolio</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'main1/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/popup/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/vendors/flaticon/flaticon.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'main1/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main1/css/responsive.css' %}">
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container box_1620">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <a class="navbar-brand logo_h" href="/"><img src="{% static 'main1/img/logo.png' %}" alt=""></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        {% include "__headers.html"%}
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+        
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="box_1620">
+				<div class="banner_inner d-flex align-items-center">
+					<div class="container">
+						<div class="banner_content text-center">
+								<h2>Search</h2></br></br>
+								<form method="post" >
+									<div class="input-group"></br>
+										{{form.as_table}}
+										{% csrf_token %}
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="submit"><i class="lnr lnr-magnifier"></i></button>
+										</span>
+									</div>
+								</form>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Home Gallery Area =================-->
+        <section class="home_gallery_area p_120">
+        	<div class="container">
+        		<div class="gallery_f_inner row imageGallery1">
+					{% for proj in results %}
+						<div class="col-lg-4 col-md-4 col-sm-6 {{proj.tags_name}} creative">
+							<div class="h_gallery_item">
+								<div class="g_img_item">
+									{% if proj.picture_main %}
+										<img class="img-fluid" src="{{ proj.picture_main.url }}" alt="">
+									{% else %}
+										<img class="img-fluid" src="{% static 'main1/img/gallery/project-1.jpg' %}" alt="">
+									{% endif %}
+									<a class="light" href="{{proj.get_absolute_url}}"><img src="{% static 'main1/img/gallery/icon.png' %}" alt=""></a>
+								</div>
+								<div class="g_item_text">
+									<a href="{{proj.get_absolute_url}}"><h4>{{proj.title}}</h4>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+        		</div>
+        	</div>
+        </section>
+        <!--================End Home Gallery Area =================-->
+        
+        
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'main1/js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'main1/js/popper.js' %}"></script>
+        <script src="{% static 'main1/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'main1/js/stellar.js' %}"></script>
+        <script src="{% static 'main1/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/isotope/isotope.pkgd.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'main1/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'main1/vendors/counter-up/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'main1/js/mail-script.js' %}"></script>
+        <script src="{% static 'main1/js/theme.js' %}"></script>
+    </body>
+</html>

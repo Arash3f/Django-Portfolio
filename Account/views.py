@@ -1,5 +1,5 @@
 
-# unComment after create super user
+## unComment after create super user
 
 
 
@@ -9,6 +9,7 @@
 # from . import forms
 # from django.views import View
 # from django.core.paginator import Paginator, PageNotAnInteger,EmptyPage
+# from django.contrib.postgres.search import SearchVector
 
 
 
@@ -74,6 +75,24 @@
 #                     'form'  :form
 #                 }
 #         return render(request,self.html,data)
+
+# def search(request):
+#     form = forms.SearchFrom()
+#     quary = None
+#     results = []
+#     if request.POST.get('query'):
+#         form = forms.SearchFrom()
+#         if form.is_valid:
+#             quary = request.POST.get('query')
+#             results = models.project.objects.all().annotate(
+#                 search = SearchVector('title','body'),
+#             ).filter(search=quary)
+    
+#     return render(request,'search_page.html',{
+#         'form':form , 
+#         'quary':quary,
+#         "results":results
+#     })
     
 # def contact_page(request):
 #     html        = 'contact.html'
@@ -94,7 +113,7 @@
 #     tags        = Tag.objects.all()
 #     projects    = models.project.objects.all()
 #     last_pro    = models.project.objects.all()[:5]
-    
+
 #     if tag_slug:
 #         tag      = get_object_or_404(Tag, slug=tag_slug)
 #         projects = projects.filter(tag__in=[tag])
@@ -125,7 +144,7 @@
 #     user        = get_object_or_404(models.User,id=1)
 #     projs       = get_object_or_404(models.project, slug=post , publish__year=year, publish__month=month, publish__day=day)
 #     projs.view_plus(request)
-#     comments    = models.comments.objects.filter(post = projs)
+#     comments    = models.comments.objects.filter(post = projs).order_by('-Date')
 #     new_comment = None
 #     if request.method == 'POST':
 #         comment_form = forms.CommentFrom(data=request.POST)
@@ -147,10 +166,6 @@
 #         com = paginator.page(1)
 #     except EmptyPage:
 #         com = paginator.page(paginator.num_pages)
-        
-#     # post_tags_ids = poste.tag.values_list('id', flat=True)
-#     # similar_post = Posts.objects.filter(tag__in=post_tags_ids).distinct().exclude(id=poste.id)
-#     # similar_post = similar_post.annotate(same_tag=Count('tag')).order_by('-same_tag','-publish')[:4] 
     
 #     data = {    'user'  :user ,
 #                 'pro' :projs ,
@@ -162,7 +177,6 @@
 #             }
     
 #     return render(request, 'details.html' , data)
-
 
 
 

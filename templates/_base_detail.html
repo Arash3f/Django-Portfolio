@@ -36,15 +36,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav menu_nav ml-auto">
-                                <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="/about">About</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-                            </ul>
-                        </div> 
+                        {% include "__headers.html"%}
                     </div>
                 </nav>
             </div>
@@ -80,27 +72,26 @@
                         {% block Comments %}
 						{% endblock %}
                         </div>
-                        <div class="comment-form">
+                        <div class="col-lg-9">
+                        </br></br></br></br>
                             <h4>Add new comment</h4>
-                            <form method="post" >
-                                {{comment_form.as_p}}
-                                {% csrf_token %}
-                                <p><input type="submit" class="white_bg_btn" value="Add comment"></p>
-                            </form>
+                            {%if request.user.get_full_name%}
+                                <form method="post">
+                                    <div class="form-group">
+                                        {{comment_form.as_p}}
+                                        {% csrf_token %}
+                                    </div>
+                                    <button type="submit" value="submit" class="btn submit_btn">Post Comment</button>
+                                </form>
+                            {%else%}
+                                <h2>Login first</h2>
+                            {%endif%}
                         </div>
+                        
                     </div>
                     </div>
                     <div class="col-lg-4">
 						<div class="blog_right_sidebar">
-							<aside class="single_sidebar_widget search_widget">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search Posts">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-									</span>
-								</div><!-- /input-group -->
-								<div class="br"></div>
-							</aside>
 							{% block author_widget %}
 							{% endblock %}
 							

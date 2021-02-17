@@ -16,10 +16,10 @@
             <h4>{{user.job}}</h4>
             <p>{{user.summery | safe}}</p>
             <ul class="list basic_info">
-                <li><a href="#"><i class="lnr lnr-calendar-full"></i> {{user.date_of_birth}}</a></li>
-                <li><a href="#"><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
-                <li><a href="#"><i class="lnr lnr-envelope"></i> {{user.email}}</a></li>
-                <li><a href="#"><i class="lnr lnr-home"></i> {{user.Location}}</a></li>
+                <li><a href=""><i class="lnr lnr-calendar-full"></i> {{user.date_of_birth}}</a></li>
+                <li><a href=""><i class="lnr lnr-phone-handset"></i> {{user.phone}}</a></li>
+                <li><a href=""><i class="lnr lnr-envelope"></i> {{user.email}}</a></li>
+                <li><a href=""><i class="lnr lnr-home"></i> {{user.Location}}</a></li>
             </ul>
             <ul class="list personal_social">
                 <li><a href="{{user.github}}"><i class="fa fa-github"></i></a></li>
@@ -99,7 +99,6 @@
 {% block services %}
     <div class="main_title">
         <h2>My Services</h2>
-        <p>see my 3 services here</p>
     </div>
     <div class="feature_inner row">
         {% for srv in services %}
@@ -122,7 +121,6 @@
     <div class="container">
         <div class="main_title">
             <h2>My last Projects and Papers</h2>
-            <p>see my last 6 Projects here</p>
         </div>
         <div class="isotope_fillter">
             <ul class="gallery_filter list">

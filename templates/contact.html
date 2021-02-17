@@ -45,10 +45,11 @@
 </div>
 <div class="col-lg-9">
         <form method="post">
+            <form method="post">
             {% csrf_token %}
             {{form.as_p}}
             </br>
-            <button type="submit" value="submit" class="btn submit_btn">Send Message</button>
+            <button type="submit" value="submit" class="btn submit_btn" name="body">Send Message</button>
         </form>
 </div>
 {% endblock %}

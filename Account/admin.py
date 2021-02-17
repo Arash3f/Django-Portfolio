@@ -24,21 +24,21 @@ class projectAdmin(admin.ModelAdmin):
     list_display  = ['__str__','tags_name_admin']
     list_filter = ['tag']
     fields = ['title','slug','summery','body','picture_main','picture_blog','tag','author']
-    prepopulated_fields = {"slug": ("title",)}
+    prepopulated_fields = {"slug": ("title",)}   
     
-    
+
 @admin.register(models.skill)
 class skillAdmin(admin.ModelAdmin):
     list_display  = ['__str__','amount']
-    
-    
-    
+
+
+
 @admin.register(models.experiences)
 class experiencesAdmin(admin.ModelAdmin):
     list_display  = ['__str__' , 'Date']
     list_filter = ['Date']
-    
-    
+  
+  
 @admin.register(models.services)
 class servicesAdmin(admin.ModelAdmin):
     list_display  = ['__str__' ]
@@ -49,8 +49,9 @@ class messagesAdmin(admin.ModelAdmin):
     
 @admin.register(models.comments)
 class commentsAdmin(admin.ModelAdmin):
-    list_display  = ['user' , 'post' ]
-    
+    list_display  = ['user' , 'post' , 'Date' ]
+    readonly_fields = ('Date',)
+
 @admin.register(models.views)
 class viewsAdmin(admin.ModelAdmin):
     list_display  = ['post' , 'ip']

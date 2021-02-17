@@ -60,8 +60,12 @@ class messages(models.Model):
     
 class comments(models.Model):
     user       = models.ForeignKey(User , on_delete=models.CASCADE , related_name='user_comment')
-    body = models.TextField( 'Body', blank=True , null=True)
-    post = models.ForeignKey('project' , on_delete=models.CASCADE , related_name='post_comment')
+    Date      = models.DateField( 'Date' , auto_now_add=True ,  blank=True , null=True)
+    body       = models.TextField( 'Body', blank=True , null=True)
+    post       = models.ForeignKey('project' , on_delete=models.CASCADE , related_name='post_comment')
+
+    def format_date(self):
+        return self.Date.strftime("%Y/%m/%d")
     
 class views(models.Model):
     ip = models.CharField('ip' ,max_length=30 ,blank=True , null=True )

@@ -38,6 +38,18 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+									<ul class="dropdown-menu">
+                                        {% if request.user.username%}
+                                            <li class="nav-item"><a class="nav-link" >Hi {{request.user.username}}</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="single-blog.html">Profile</a></li>
+                                        {%else%}
+                                            <li class="nav-item"><a class="nav-link" href="account/login">Login</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="register">Register</a></li>
+                                        {%endif%}
+									</ul>
+								</li> 
                                 <li class="nav-item active"><a class="nav-link" href="/">Home</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li> 
                                 <li class="nav-item"><a class="nav-link" href="/services">Services</a></li> 
@@ -89,15 +101,6 @@
 					</div>
 					<div class="col-lg-4">
 						<div class="blog_right_sidebar">
-							<aside class="single_sidebar_widget search_widget">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Search Posts">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-									</span>
-								</div><!-- /input-group -->
-								<div class="br"></div>
-							</aside>
 							{% block author_widget %}
 							{% endblock %}
 							
